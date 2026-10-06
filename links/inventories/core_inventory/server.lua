@@ -2,10 +2,6 @@ if Link.inventory ~= 'core_inventory' and Link.inventory ~= 'core' then
     return
 end
 
-function GetPlayerInventory(player)
-    return NormalizeInventoryOutput(exports['core_inventory']:getInventory(player))
-end
-
 function GetPlayerItemData(player, item)
     local data = exports['core_inventory']:getItem(player, item)
     return data or {}
@@ -33,23 +29,5 @@ end
 
 function GetStashItems(stashId)
     return exports['core_inventory']:getInventory( ('stash-' .. stashId):gsub(' ', ''))
-end
-
-function AddPlayerWeapon(player, weapon, ammo)
-    return AddPlayerItem(player, weapon, 1, { ammo = ammo or 0 })
-end
-
-function DoesPlayerHaveWeapon(player, weapon)
-    return GetPlayerItemCount(player, weapon) > 0
-end
-
-function RemovePlayerWeapon(player, weapon)
-    return RemovePlayerItem(player, weapon, 1)
-end
-
-function GetInventoryItems()
-    return UseCache('kq_link:core_inventory:items', function()
-        return NormalizeItems(exports.core_inventory:getItemsList())
-    end, 60000)
 end
 --

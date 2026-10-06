@@ -30,4 +30,3 @@ exports('GetPlayerInventory', GetPlayerInventory)
 -- RESOURCE
 exports('AddPlayerItemToFit', AddPlayerItemToFit)
 exports('RegisterServerCallback', RegisterServerCallback)
-

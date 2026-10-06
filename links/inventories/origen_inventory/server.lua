@@ -2,10 +2,6 @@ if Link.inventory ~= 'origen_inventory' and Link.inventory ~= 'origen' then
     return
 end
 
-function GetPlayerInventory(player)
-    return NormalizeInventoryOutput(exports['origen_inventory']:getInventory(player))
-end
-
 function RegisterUsableItem(...)
     exports['origen_inventory']:CreateUseableItem(...)
 end
@@ -50,25 +46,7 @@ function GetStashItems(stashId)
     if not stashes[stashId] then
         return {}
     end
-
+    
     return exports['origen_inventory']:GetStashItems(stashId)
-end
-
-function AddPlayerWeapon(player, weapon, ammo)
-    return AddPlayerItem(player, weapon, 1, { ammo = ammo or 0 })
-end
-
-function DoesPlayerHaveWeapon(player, weapon)
-    return GetPlayerItemCount(player, weapon) > 0
-end
-
-function RemovePlayerWeapon(player, weapon)
-    return RemovePlayerItem(player, weapon, 1)
-end
-
-function GetInventoryItems()
-    return UseCache('kq_link:origen_inventory:items', function()
-        return NormalizeItems(exports['origen_inventory']:getItems())
-    end, 60000)
 end
 --

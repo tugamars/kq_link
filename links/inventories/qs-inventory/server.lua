@@ -2,10 +2,6 @@ if Link.inventory ~= 'qs-inventory' and Link.inventory ~= 'qs' then
     return
 end
 
-function GetPlayerInventory(player)
-    return NormalizeInventoryOutput(exports['qs-inventory']:GetInventory(player))
-end
-
 function RegisterUsableItem(...)
     exports['qs-inventory']:CreateUsableItem(...)
 end
@@ -46,19 +42,7 @@ end
 
 function GetStashItems(stashId)
     stashId = ('stash_' .. stashId):gsub('-', '_')
-
+    
     return exports['qs-inventory']:GetStashItems(stashId)
-end
-
-function AddPlayerWeapon(player, weapon, ammo)
-    return AddPlayerItem(player, weapon, 1, { ammo = ammo or 0 })
-end
-
-function DoesPlayerHaveWeapon(player, weapon)
-    return GetPlayerItemCount(player, weapon) > 0
-end
-
-function RemovePlayerWeapon(player, weapon)
-    return RemovePlayerItem(player, weapon, 1)
 end
 --

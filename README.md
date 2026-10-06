@@ -18,7 +18,6 @@ KuzQuality link not only links resources with other resources and frameworks. It
 - qb-core
 - ox-core
 - vrp
-- tmc
   
 > Along the frameworks all scripts using kq_link are able to function on standalone servers due to our mock functions made to always return correct data.
 
@@ -30,11 +29,9 @@ ___
 - codem-inventory
 - core_inventory (c8re)
 - ps-inventory
-- qs-inventory *(discontinued support)*
+- qs-inventory
 - origen_inventory
 - chezza
-- tgiann-inventory
-- jaksam_inventory
 
 > All framework integrated inventories also are supported. esx_inventory, qb-inventory etc.
 
@@ -44,7 +41,6 @@ ___
 - interact (by darktrovx)
 - qtarget
 - qb-target
-- TMC (Interaction Prompts)
 
 ## Interaction systems (Internal)
 - 3D text
@@ -60,7 +56,6 @@ ___
 - okokNotify
 - mythic
 - 17mov
-- gs-notify
 
 > All framework integrated notification systems also are supported. esx notifications, qb-notify etc.
 > When no system is selected and no framework system is available, The script will use native GTA V notifications
@@ -71,21 +66,7 @@ ___
 - Project Sloth - ps-dispatch
 - Quasar - qs-dispatch
 - Rcore dispatch
-- pScripts - p_mdt (v2)
-- TK Scripts - tk_dispatch
-- Origen - origen-police
 - Custom built-in solution
-
-___
-
-## Vehicle Keys systems
-- qb-vehiclekeys
-- qbx_vehiclekeys
-- wasabi_carlock
-- jaksam
-- mrnewb
-- renewed
-- cd_garage
 
 ___
 

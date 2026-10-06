@@ -21,25 +21,25 @@ function GetPlayerJob(player)
 end
 
 function GetPlayersWithJob(jobs, minGrade)
+    local matchingPlayers = {}
+    local players = GetPlayers()
+    local isTable = type(jobs) == 'table'
     minGrade = minGrade or 0
 
-    local matchingPlayers = {}
-    local added = {}
+    for _, playerId in ipairs(players) do
+        local src = tonumber(playerId)
+        local job, grade = GetPlayerJob(src)
 
-    local isTable = type(jobs) == 'table'
-    local jobList = isTable and jobs or { jobs }
-
-    for _, jobName in ipairs(jobList) do
-        local jobPlayers = ESX.GetExtendedPlayers('job', jobName) or {}
-
-        for _, xPlayer in ipairs(jobPlayers) do
-            local src = tonumber(xPlayer.source)
-            if src and not added[src] then
-                local job, grade = GetPlayerJob(src)
-                if job == jobName and grade >= minGrade then
-                    added[src] = true
-                    matchingPlayers[#matchingPlayers + 1] = src
+        if job and grade then
+            if isTable then
+                for _, name in ipairs(jobs) do
+                    if job == name and grade >= minGrade then
+                        table.insert(matchingPlayers, src)
+                        break
+                    end
                 end
+            elseif job == jobs and grade >= minGrade then
+                table.insert(matchingPlayers, src)
             end
         end
     end
@@ -143,65 +143,10 @@ if Link.inventory == 'framework' then
         -- Not available in standalone
         return {}
     end
-
-    function AddPlayerWeapon(player, weapon, ammo)
-        local xPlayer = ESX.GetPlayerFromId(player)
-        if not xPlayer then
-            return false
-        end
-
-        xPlayer.addWeapon(weapon, ammo or 0)
-        return true
-    end
-
-    function DoesPlayerHaveWeapon(player, weapon)
-        local xPlayer = ESX.GetPlayerFromId(player)
-        if not xPlayer then
-            return false
-        end
-
-        return xPlayer.hasWeapon(weapon)
-    end
-
-    function RemovePlayerWeapon(player, weapon)
-        local xPlayer = ESX.GetPlayerFromId(player)
-        if not xPlayer then
-            return false
-        end
-
-        xPlayer.removeWeapon(weapon)
-        return true
-    end
-
-    function GetInventoryItems()
-        if type(ESX.GetItems) ~= 'function' then return {} end
-        local raw = ESX.GetItems()
-        return NormalizeItems(raw)
-    end
 end
 
 function GetPlayerCharacterId(player)
     local xPlayer = ESX.GetPlayerFromId(player)
 
-    if not xPlayer then
-        return nil
-    end
-
     return xPlayer.identifier
-end
-
-function GetPlayerCharacterName(player)
-    local xPlayer = ESX.GetPlayerFromId(player)
-    if not xPlayer then
-        return GetPlayerName(player) or 'Unknown'
-    end
-
-    local firstName = xPlayer.get('firstName')
-    local lastName = xPlayer.get('lastName')
-
-    if firstName and lastName then
-        return firstName .. ' ' .. lastName
-    end
-
-    return xPlayer.getName() or GetPlayerName(player) or 'Unknown'
 end

@@ -6,7 +6,7 @@ end
 function GetPlayerJob(player)
     local xPlayer = exports.qbx_core:GetPlayer(player)
     local job = xPlayer and xPlayer.PlayerData.job and xPlayer.PlayerData.job.name
-    local grade = xPlayer and xPlayer.PlayerData.job and xPlayer.PlayerData.job.grade and xPlayer.PlayerData.job.grade.level
+    local grade = xPlayer and xPlayer.PlayerData.job and xPlayer.PlayerData.job.grade
 
     return job, grade
 end
@@ -85,31 +85,8 @@ end
 function GetPlayerCharacterId(player)
     local xPlayer = exports.qbx_core:GetPlayer(tonumber(player))
 
-    if not xPlayer or not xPlayer.PlayerData then
-        return nil
-    end
-
     return xPlayer.PlayerData.citizenid
 end
-
-function GetPlayerCharacterName(player)
-    local xPlayer = exports.qbx_core:GetPlayer(tonumber(player))
-    if not xPlayer or not xPlayer.PlayerData or not xPlayer.PlayerData.charinfo then
-        return GetPlayerName(player) or 'Unknown'
-    end
-
-    local charinfo = xPlayer.PlayerData.charinfo
-    local firstName = charinfo.firstname
-    local lastName = charinfo.lastname
-
-    if firstName and lastName then
-        return firstName .. ' ' .. lastName
-    end
-
-    return GetPlayerName(player) or 'Unknown'
-end
-
--- QBox uses ox_inventory by default, weapon functions defined in inventory file
 
 function RegisterUsableItem(...)
     return true -- This system doesn't have it

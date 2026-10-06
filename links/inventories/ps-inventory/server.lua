@@ -2,10 +2,6 @@ if Link.inventory ~= 'ps-inventory' and Link.inventory ~= 'ps' then
     return
 end
 
-function GetPlayerInventory(player)
-    return NormalizeInventoryOutput(exports['ps-inventory']:GetInventory(player))
-end
-
 function GetPlayerItemData(player, item)
     local data = exports['ps-inventory']:GetItemByName(player, item)
     return data
@@ -38,19 +34,7 @@ end
 
 function GetStashItems(stashId)
     stashId = ('stash_' .. stashId):gsub('-', '_')
-
+    
     exports['ps-inventory']:GetStashItems(stashId)
-end
-
-function AddPlayerWeapon(player, weapon, ammo)
-    return AddPlayerItem(player, weapon, 1, { ammo = ammo or 0 })
-end
-
-function DoesPlayerHaveWeapon(player, weapon)
-    return GetPlayerItemCount(player, weapon) > 0
-end
-
-function RemovePlayerWeapon(player, weapon)
-    return RemovePlayerItem(player, weapon, 1)
 end
 --

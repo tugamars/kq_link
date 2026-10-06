@@ -62,6 +62,7 @@ local function DetectAndSetVehicleKeys()
         ['MrNewbVehicleKeys'] = 'mrnewb',
         ['Renewed-Vehiclekeys'] = 'renewed',
         ['cd_garage'] = 'cd_garage',
+		['eots_keys'] = 'eots_keys',
     }
 
     for resource, config in pairs(vehiclekeys) do
@@ -87,6 +88,7 @@ local function DetectAndSetNotifications()
         ['mythic_notify'] = 'mythic',
         ['17mov_Hud'] = '17mov',
         ['ox_lib'] = 'ox',
+        ['ox'] = 'ox',
     }
 
     for resource, config in pairs(notifications) do

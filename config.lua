@@ -18,11 +18,10 @@ Link = {
     --- 'qb-core'
     --- 'ox'
     --- 'qbox'
-    --- 'tmc'
     --- 'vrp' -- You will need to add the necessary vrp imports to the fxmanifest.
     --- 'none' / 'standalone'
 
-    framework = 'auto',
+    framework = 'nd',
 
 
     -- Framework specific detail options (DO NOT REMOVE)
@@ -43,25 +42,21 @@ Link = {
 --- 'core_inventory' -- Core inventory system (c8re)
 --- 'ak47_inventory' -- AK47 inventory system (menan)
 --- 'origen_inventory' -- Origen inventory system
---- 'chezza' -- Chezza inventory system
---- 'tgiann-inventory' -- Tgiann inventory system
---- 'jaksam_inventory' -- Jaksam's inventory system
-Link.inventory = 'auto'
+--- 'chezza' -- Chezza inventory system (inventory)
+Link.inventory = 'ox_inventory'
 
 
 --- NOTIFICATION OPTIONS
 ------------------------
---- 'auto' -- The script will automatically find the notification system
 --- 'framework' -- The native framework notification system will be used
 --- 'ox' -- Notification system made by OX
---- 'gs-notify' -- Notification system made by GS
 --- 'codem-notification' -- Notifications system made by CodeM
 --- 'okokNotify' -- Notifications system made by okok
 --- 'mythic' -- Notifications system made by mythic
 --- '17mov' -- Notifications system made by 17Movement
 ---
 --- 'standalone' -- A standalone solution will be used for notifications (top left display)
-Link.notifications = 'standalone'
+Link.notifications = 'ox'
 
 
 ------------------------
@@ -70,12 +65,11 @@ Link.notifications = 'standalone'
 Link.input = {
     target = {
         -- Whether to use a targeting system
-        enabled = false,
+        enabled = true,
         --- 'ox_target' -- ox targeting system
         --- 'qb-target' -- QBCore targeting system
         --- 'qtarget' -- The classic qtarget system commonly used in esx
         --- 'interact' -- Interact system by darktrovx
-        --- 'tmc' -- TMC Core interaction prompts
         ---
         --- You may also try entering the name of other targeting systems, as they often use very similar exports.
         system = 'ox_target'
@@ -109,15 +103,11 @@ Link.input = {
 --- 'ps' -- Dispatch system made by Project Sloth
 --- 'qs' -- Dispatch system made by Quasar
 --- 'rcore' -- Dispatch system made by Rcore
---- 'p_mdt' -- Dispatch system made by pScripts
---- 'tk' -- Dispatch system made by TK Scripts
---- 'origen' -- Dispatch system made by Origen (Origen-police)
 ---
 --- 'standalone' -- Built in dispatch system
 Link.dispatch = {
-    system = 'standalone'
+    system = 'tugamars'
 }
-
 
 --- VEHICLE KEYS OPTIONS
 ------------------------
@@ -133,4 +123,4 @@ Link.dispatch = {
 --- 'tmc' -- TMC vehicle keys system
 ---
 --- 'standalone' -- Set to this option if you are not using any vehicle keys systems
-Link.vehiclekeys = 'auto'
+Link.vehiclekeys = 'eots_keys'
